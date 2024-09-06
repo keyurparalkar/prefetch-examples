@@ -13,9 +13,17 @@ export default function PopoverExample() {
 
 	const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
 
+	const handleMouseEnter = () => {
+		console.log("ON Mouse Enter");
+	};
+
 	return (
 		<>
-			<h2 ref={refs.setReference} {...getReferenceProps()}>
+			<h2
+				ref={refs.setReference}
+				{...getReferenceProps()}
+				onMouseEnter={handleMouseEnter}
+			>
 				Reference element
 			</h2>
 			{isOpen && (
