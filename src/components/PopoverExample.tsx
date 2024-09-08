@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useFloating, useHover, useInteractions } from "@floating-ui/react";
+import UserProfile from "./UserProfile";
+import UserProfileWithFetching from "./UserProfileWithFetching";
 
 export default function PopoverExample() {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [data, setData] = useState({});
 
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
@@ -15,6 +19,15 @@ export default function PopoverExample() {
 
 	const handleMouseEnter = () => {
 		console.log("ON Mouse Enter");
+		if (Object.keys(data).length === 0) {
+			setIsLoading(true);
+			fetch("https://jsonplaceholder.typicode.com/users/1")
+				.then((resp) => resp.json())
+				.then((data) => {
+					setData(data);
+					setIsLoading(false);
+				});
+		}
 	};
 
 	return (
@@ -26,9 +39,9 @@ export default function PopoverExample() {
 				alignItems: "center",
 				textAlign: "left",
 			}}
+			onMouseEnter={handleMouseEnter}
 		>
 			<span
-				onMouseEnter={handleMouseEnter}
 				style={{
 					padding: "1rem",
 				}}
@@ -66,7 +79,8 @@ export default function PopoverExample() {
 					}}
 					{...getFloatingProps()}
 				>
-					Floating element
+					{isLoading ? <span>Loading...</span> : <UserProfile {...data} />}
+					{/* <UserProfileWithFetching /> */}
 				</div>
 			)}
 		</div>
