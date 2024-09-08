@@ -18,14 +18,41 @@ export default function PopoverExample() {
 	};
 
 	return (
-		<>
-			<h2
-				ref={refs.setReference}
-				{...getReferenceProps()}
+		<div
+			id="hover-example"
+			style={{
+				display: "flex",
+				flexDirection: "row",
+				alignItems: "center",
+				textAlign: "left",
+			}}
+		>
+			<span
 				onMouseEnter={handleMouseEnter}
+				style={{
+					padding: "1rem",
+				}}
 			>
-				Reference element
-			</h2>
+				<img
+					ref={refs.setReference}
+					{...getReferenceProps()}
+					style={{
+						borderRadius: "50%",
+					}}
+					src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/vibrent_5.png"
+				/>
+			</span>
+			<p>
+				Lorem Ipsum is simply dummy text of the printing and typesetting
+				industry. Lorem Ipsum has been the industry's standard dummy text ever
+				since the 1500s, when an unknown printer took a galley of type and
+				scrambled it to make a type specimen book. It has survived not only five
+				centuries, but also the leap into electronic typesetting, remaining
+				essentially unchanged. It was popularised in the 1960s with the release
+				of Letraset sheets containing Lorem Ipsum passages, and more recently
+				with desktop publishing software like Aldus PageMaker including versions
+				of Lorem Ipsum.
+			</p>
 			{isOpen && (
 				<div
 					className="floating"
@@ -42,6 +69,6 @@ export default function PopoverExample() {
 					Floating element
 				</div>
 			)}
-		</>
+		</div>
 	);
 }

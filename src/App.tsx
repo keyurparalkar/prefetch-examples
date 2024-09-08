@@ -6,7 +6,7 @@ export default function App() {
 		<div
 			style={{
 				display: "grid",
-				gridTemplateRows: "1fr 1fr 1fr",
+				gridTemplateRows: "auto 1fr",
 				gridTemplateColumns: "1fr auto",
 			}}
 		>
