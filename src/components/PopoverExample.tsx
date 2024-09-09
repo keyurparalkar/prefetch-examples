@@ -1,8 +1,28 @@
 import { useState } from "react";
 import { useFloating, useHover, useInteractions } from "@floating-ui/react";
+import ContentLoader from "react-content-loader";
 import UserProfile from "./UserProfile";
 import UserProfileWithFetching from "./UserProfileWithFetching";
 
+export const MyLoader = () => (
+	<ContentLoader
+		speed={2}
+		width={340}
+		height={84}
+		viewBox="0 0 340 84"
+		backgroundColor="#d1d1d1"
+		foregroundColor="#fafafa"
+	>
+		<rect x="0" y="0" rx="3" ry="3" width="67" height="11" />
+		<rect x="76" y="0" rx="3" ry="3" width="140" height="11" />
+		<rect x="127" y="48" rx="3" ry="3" width="53" height="11" />
+		<rect x="187" y="48" rx="3" ry="3" width="72" height="11" />
+		<rect x="18" y="48" rx="3" ry="3" width="100" height="11" />
+		<rect x="0" y="71" rx="3" ry="3" width="37" height="11" />
+		<rect x="18" y="23" rx="3" ry="3" width="140" height="11" />
+		<rect x="166" y="23" rx="3" ry="3" width="173" height="11" />
+	</ContentLoader>
+);
 export default function PopoverExample() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
@@ -11,6 +31,7 @@ export default function PopoverExample() {
 	const { refs, floatingStyles, context } = useFloating({
 		open: isOpen,
 		onOpenChange: setIsOpen,
+		placement: "top",
 	});
 
 	const hover = useHover(context);
@@ -79,7 +100,7 @@ export default function PopoverExample() {
 					}}
 					{...getFloatingProps()}
 				>
-					{isLoading ? <span>Loading...</span> : <UserProfile {...data} />}
+					{isLoading ? <MyLoader /> : <UserProfile {...data} />}
 					{/* <UserProfileWithFetching /> */}
 				</div>
 			)}

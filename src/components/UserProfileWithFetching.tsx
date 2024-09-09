@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MyLoader } from "./PopoverExample";
 
 export default function UserProfileWithFetching() {
 	const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +15,7 @@ export default function UserProfileWithFetching() {
 			});
 	}, []);
 
-	if (isLoading) return <span>Loading...</span>;
+	if (isLoading) return <MyLoader />;
 
 	return (
 		<div id="user-profile">
