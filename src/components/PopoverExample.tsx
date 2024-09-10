@@ -100,7 +100,11 @@ export default function PopoverExample() {
 					}}
 					{...getFloatingProps()}
 				>
-					{isLoading ? <MyLoader /> : <UserProfile {...data} />}
+					{isLoading ? (
+						<MyLoader />
+					) : (
+						<UserProfile hasAdditionalDetails {...data} />
+					)}
 					{/* <UserProfileWithFetching /> */}
 				</div>
 			)}
