@@ -12,9 +12,9 @@ export default function App() {
 		>
 			<h1 style={{ gridColumn: "1/3" }}>Prefetch Examples</h1>
 			<PopoverExample />
+			{/* <PopoverExample />
 			<PopoverExample />
-			<PopoverExample />
-			<PopoverExample />
+			<PopoverExample /> */}
 		</div>
 	);
 }
