@@ -22,14 +22,20 @@ export default function UserProfile(props: Record<string, string | boolean>) {
 			setIsLoading(true);
 			fetch("https://jsonplaceholder.typicode.com/albums")
 				.then((resp) => resp.json())
-				.then((data: Array<unknown>) => {
-					const albumCount = data.reduce((acc, curr) => {
-						if (curr.userId === 1) acc += 1;
+				.then(
+					(
+						data: Array<{
+							userId: number;
+						}>
+					) => {
+						const albumCount = data.reduce((acc, curr) => {
+							if (curr.userId === 1) acc += 1;
 
-						return acc;
-					}, 0);
-					setAdditionalData(albumCount);
-				})
+							return acc;
+						}, 0);
+						setAdditionalData(albumCount);
+					}
+				)
 				.finally(() => {
 					setIsLoading(false);
 				});

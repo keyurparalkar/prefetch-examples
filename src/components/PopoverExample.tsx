@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useFloating, useHover, useInteractions } from "@floating-ui/react";
 import ContentLoader from "react-content-loader";
 import UserProfile from "./UserProfile";
-import UserProfileWithFetching from "./UserProfileWithFetching";
+// import UserProfileWithFetching from "./UserProfileWithFetching";
 
 export const MyLoader = () => (
 	<ContentLoader
